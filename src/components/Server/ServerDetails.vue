@@ -1,7 +1,12 @@
 <template>
     <div class="col-xs-12 col-sm-6">
-        <p v-if="!currentServer">Server Not Selected</p>
-        <p v-else>Server ID: {{ currentServer }}</p>
+        <template v-if="!currentServer">
+            <p>Server Not Selected</p>
+        </template>
+        <template v-else>
+            <p>Server ID: {{ currentServer.id }}</p>
+            <p>Server Status: {{ currentServer.status }}</p>
+        </template>
     </div>
 
 </template>

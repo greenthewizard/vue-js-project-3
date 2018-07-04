@@ -4,7 +4,7 @@
         <hr>
         <div class="row">
             <app-servers></app-servers>
-            <app-server-details :server="currentServer">
+            <app-server-details :currentServer="currentServer">
             </app-server-details>
         </div>
         <hr>
@@ -17,6 +17,7 @@
     import Footer from './components/Shared/Footer.vue';
     import Servers from './components/Server/Servers.vue';
     import ServerDetails from './components/Server/ServerDetails.vue';
+    import { EventBus } from './main';
 
     export default {
         components: {
@@ -31,10 +32,8 @@
             }
         },
         created: function () {
-            //Not working
-            this.$on('updateCurrentServer', function () {
-               this.currentServer = $event;
-               console.log('hello');
+            EventBus.$on('updateCurrentServer', server => {
+               this.currentServer = server;
             });
         }
     }

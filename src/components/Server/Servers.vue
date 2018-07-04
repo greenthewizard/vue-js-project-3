@@ -2,10 +2,10 @@
     <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
             <li
-                    class="list-group-item"
-                    v-for="server in servers"
-                    :key="server.id"
-                    @click="selectServer(server)">
+                class="list-group-item"
+                v-for="server in servers"
+                :key="server.id"
+                @click="selectServer(server)">
                 Server #{{ server.id }}: Status - {{ server.status }}
             </li>
         </ul>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { EventBus } from '../../main';
+
 export default {
     data: function () {
         return {
@@ -26,7 +28,7 @@ export default {
     },
     methods: {
         selectServer: function (server) {
-            this.$emit('updateCurrentServer', server);
+            EventBus.$emit('updateCurrentServer', server);
         }
     }
 }
